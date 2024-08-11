@@ -1,6 +1,8 @@
 openai-whisper
 setuptools-rust
 datasets
+transformers
+evaluate
 gdown
 dvc
 mlflow==2.2.2
