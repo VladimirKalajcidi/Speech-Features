@@ -1,0 +1,77 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 7a8b2238c6f3e6bad004f2be0ba3f054
+      size: 474
+    - path: src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 36c2d7026a51d65429788b03917cf981
+      size: 846
+    outs:
+    - path: artifacts/data_ingestion/data.hf
+      hash: md5
+      md5: 5a384c93c7dee590923ffb0b239bdc3a.dir
+      size: 1575323900
+      nfiles: 7
+  prepare_base_model:
+    cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 7a8b2238c6f3e6bad004f2be0ba3f054
+      size: 474
+    - path: src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+      hash: md5
+      md5: cf1b23bb045155f69a6b680195cd7783
+      size: 918
+    params:
+      params.yaml:
+        SIZE: openai/whisper-tiny
+    outs:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: beb931e827a5f33b3f17cf2ef11fb65b.dir
+      size: 302135370
+      nfiles: 6
+  training:
+    cmd: python src/cnnClassifier/pipeline/stage_03_model_trainer.py
+    deps:
+    - path: artifacts/data_ingestion/data.hf
+      hash: md5
+      md5: 5a384c93c7dee590923ffb0b239bdc3a.dir
+      size: 1575323900
+      nfiles: 7
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: beb931e827a5f33b3f17cf2ef11fb65b.dir
+      size: 302135370
+      nfiles: 6
+    - path: config/config.yaml
+      hash: md5
+      md5: 7a8b2238c6f3e6bad004f2be0ba3f054
+      size: 474
+    - path: src/cnnClassifier/pipeline/stage_03_model_trainer.py
+      hash: md5
+      md5: 24ded3525d18f57419549e8d15b136ad
+      size: 924
+    params:
+      params.yaml:
+        DATA_SIZE: 2
+        GENERATION_MAX_LENGTH: 225
+        LANGUAGE: Russian
+        LEARNING_RATE: 0,00001
+        MAX_STEPS: 1
+        METRIC: wer
+        PUSH_TO_HUB: false
+        SIZE: openai/whisper-tiny
+        TASK: transcribe
+    outs:
+    - path: artifacts/training/model
+      hash: md5
+      md5: c03ef0517ad9781dbc20a63cb602082f.dir
+      size: 599768339
+      nfiles: 12
