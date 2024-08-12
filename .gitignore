@@ -163,3 +163,4 @@ cython_debug/
 
 artifacts/*
 research/model.pt
+model/*
