@@ -2,7 +2,8 @@ import os
 from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import (DataIngestionConfig,
-                                                PrepareBaseModelConfig)
+                                                PrepareBaseModelConfig,
+                                                TrainingConfig)
 
 
 class ConfigurationManager:
@@ -45,3 +46,31 @@ class ConfigurationManager:
 
         return prepare_base_model_config
     
+
+    def get_training_config(self) -> TrainingConfig:
+        training = self.config.training
+        prepare_base_model = self.config.prepare_base_model
+        params = self.params
+        training_data = os.path.join(self.config.data_ingestion.root_dir, "data.hf")
+        print(training_data)
+        create_directories([
+            Path(training.root_dir)
+        ])
+
+        training_config = TrainingConfig(
+            root_dir=Path(training.root_dir),
+            trained_model_path=Path(training.trained_model_path),
+            updated_base_model_path=Path(prepare_base_model.updated_base_model_path),
+            training_data=Path(training_data),
+            size = params.SIZE,
+            data_size=params.DATA_SIZE,
+            max_steps=params.MAX_STEPS,
+            language=params.LANGUAGE,
+            task=params.TASK,
+            metric=params.METRIC,
+            learning_rate=params.LEARNING_RATE,
+            generation_max_length=params.GENERATION_MAX_LENGTH,
+            push_to_hub=params.PUSH_TO_HUB
+        )
+
+        return training_config

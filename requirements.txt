@@ -1,8 +1,13 @@
 openai-whisper
+torch
 setuptools-rust
 datasets
+accelerate
 transformers
+ipywidgets
+huggingface_hub
 evaluate
+jiwer
 gdown
 dvc
 mlflow==2.2.2

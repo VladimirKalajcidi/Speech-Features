@@ -1,3 +1,9 @@
-SIZE: tiny
+SIZE: openai/whisper-tiny
 LANGUAGE: Russian
 TASK: transcribe
+METRIC: wer
+LEARNING_RATE: 0,00001
+MAX_STEPS: 1
+GENERATION_MAX_LENGTH: 225
+PUSH_TO_HUB: False
+DATA_SIZE: 1

@@ -15,3 +15,21 @@ class PrepareBaseModelConfig:
     base_model_path: Path
     updated_base_model_path: Path
     size: str
+
+
+@dataclass(frozen=True)
+class TrainingConfig:
+    root_dir: Path
+    trained_model_path: Path
+    updated_base_model_path: Path
+    training_data: Path
+    size: Path
+    data_size: int
+    max_steps: int
+    language: str
+    task: str
+    metric: str
+    learning_rate: float
+    max_steps: int
+    generation_max_length: int
+    push_to_hub: bool

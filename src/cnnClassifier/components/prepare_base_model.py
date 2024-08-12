@@ -3,6 +3,7 @@ import urllib.request as request
 from zipfile import ZipFile
 import whisper
 import torch
+from transformers import WhisperForConditionalGeneration
 from pathlib import Path
 from cnnClassifier.entity.config_entity import (PrepareBaseModelConfig)
 
@@ -14,7 +15,7 @@ class PrepareBaseModel:
 
     
     def get_base_model(self):
-        self.model = whisper.load_model(self.config.size)
+        self.model = WhisperForConditionalGeneration.from_pretrained(self.config.size)
 
         self.save_model(path=self.config.base_model_path, model=self.model)
 
@@ -23,4 +24,4 @@ class PrepareBaseModel:
 
     @staticmethod
     def save_model(path: Path, model):
-        torch.save({'model_state_dict': model.state_dict()}, path)
+        model.save_pretrained(path, from_pt=True)
