@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/endtoend/mlruns/0/af6b141c711a4095a953d3fe339e5829/artifacts
+end_time: 1723445356986
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: af6b141c711a4095a953d3fe339e5829
+run_name: artifacts/training/model
+run_uuid: af6b141c711a4095a953d3fe339e5829
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723445353219
+status: 3
+tags: []
+user_id: vscode

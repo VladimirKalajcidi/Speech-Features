@@ -1,16 +1,16 @@
 schema: '2.0'
 stages:
   data_ingestion:
-    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    cmd: python src/speechRecognition/pipeline/stage_01_data_ingestion.py
     deps:
     - path: config/config.yaml
       hash: md5
       md5: 7a8b2238c6f3e6bad004f2be0ba3f054
       size: 474
-    - path: src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    - path: src/speechRecognition/pipeline/stage_01_data_ingestion.py
       hash: md5
-      md5: 36c2d7026a51d65429788b03917cf981
-      size: 846
+      md5: ccae3c8f6530e7ec02b8909d2bd255ac
+      size: 858
     outs:
     - path: artifacts/data_ingestion/data.hf
       hash: md5
@@ -18,27 +18,27 @@ stages:
       size: 1575323900
       nfiles: 7
   prepare_base_model:
-    cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+    cmd: python src/speechRecognition/pipeline/stage_02_prepare_base_model.py
     deps:
     - path: config/config.yaml
       hash: md5
       md5: 7a8b2238c6f3e6bad004f2be0ba3f054
       size: 474
-    - path: src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+    - path: src/speechRecognition/pipeline/stage_02_prepare_base_model.py
       hash: md5
-      md5: cf1b23bb045155f69a6b680195cd7783
-      size: 918
+      md5: 8098990a8a8a88920faed810523b4ea0
+      size: 930
     params:
       params.yaml:
         SIZE: openai/whisper-tiny
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: beb931e827a5f33b3f17cf2ef11fb65b.dir
+      md5: b5c4d2650d347bd0542afb4f6e770a2c.dir
       size: 302135370
       nfiles: 6
   training:
-    cmd: python src/cnnClassifier/pipeline/stage_03_model_trainer.py
+    cmd: python src/speechRecognition/pipeline/stage_03_model_trainer.py
     deps:
     - path: artifacts/data_ingestion/data.hf
       hash: md5
@@ -47,17 +47,17 @@ stages:
       nfiles: 7
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: beb931e827a5f33b3f17cf2ef11fb65b.dir
+      md5: b5c4d2650d347bd0542afb4f6e770a2c.dir
       size: 302135370
       nfiles: 6
     - path: config/config.yaml
       hash: md5
       md5: 7a8b2238c6f3e6bad004f2be0ba3f054
       size: 474
-    - path: src/cnnClassifier/pipeline/stage_03_model_trainer.py
+    - path: src/speechRecognition/pipeline/stage_03_model_trainer.py
       hash: md5
-      md5: 24ded3525d18f57419549e8d15b136ad
-      size: 924
+      md5: ab22a7a640cd31f3d6d3b2a955ac3b18
+      size: 936
     params:
       params.yaml:
         DATA_SIZE: 2
@@ -72,6 +72,6 @@ stages:
     outs:
     - path: artifacts/training/model
       hash: md5
-      md5: c03ef0517ad9781dbc20a63cb602082f.dir
-      size: 599768339
-      nfiles: 12
+      md5: a616cb22afeb83dd2aa555e0aa0f5ce3.dir
+      size: 151074406
+      nfiles: 4

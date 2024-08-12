@@ -8,7 +8,7 @@ __version__ = "0.0.0"
 
 REPO_NAME = "Chest-Cancer-Classification-Project"
 AUTHOR_USER_NAME = "entbappy"
-SRC_REPO = "cnnClassifier"
+SRC_REPO = "speechRecognition"
 AUTHOR_EMAIL = "entbappy73@gmail.com"
 
 
