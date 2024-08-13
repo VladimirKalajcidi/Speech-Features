@@ -164,6 +164,7 @@ artifacts/*
 *research/model.pt
 model/*
 mlruns/*
+mlruns/0/*
 audio*
 *.json
 *devcontainer/*

@@ -6,7 +6,7 @@ Install Docker.
 ```sh
 $ git clone https://github.com/VladimirKalajcidi/endtoend.git
 $ cd endtoend
-$ docker build -t whisper .
+$ docker build -t stt .
 ```
 
 ## Usage
@@ -14,21 +14,21 @@ $ docker build -t whisper .
 Execute following command in `endtoend` directory.
 
 ```sh
-$ docker run -it -d -v $(pwd):/app/ --net host --name whisper whisper
-$ docker exec -it whisper bash
+$ docker run -it -d -v $(pwd):/app/ --net host --name stt stt
+$ docker exec -it stt bash
 root@hostname:/workspace# ./installation.sh
 root@hostname:/workspace# python app.py -i audio.mp3 -o output.json -m openai/whisper-small 
 ```
-### arguments:
+Arguments for `app.py`:
     - i: input .mp3 file
-    - o: ouput json file
-    - m: model path, defalut = "openai/whisper-base"
+    - o: ouput .json file
+    - m: model path, defalut = "openai/whisper-base", finetuned = "artifacts/training/model"
 
 
 ## Model training
 ```sh
-$ docker run -it -d -v $(pwd):/app/ --net host --name whisper whisper
-$ docker exec -it whisper bash
+$ docker run -it -d -v $(pwd):/app/ --net host --name stt stt
+$ docker exec -it stt bash
 root@hostname:/workspace# ./installation.sh
 root@hostname:/workspace# dvc repro
 ```
