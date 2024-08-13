@@ -166,5 +166,7 @@ model/*
 mlruns/*
 audio*
 *.json
-.devcontainer*
+*devcontainer/*
 cache/*
+*test.txt
+env2/*
