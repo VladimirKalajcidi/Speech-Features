@@ -1,5 +1,4 @@
 # SPEECH FEATURES
-whisper with docker
 
 ## Setup
 Install Docker.
@@ -23,4 +22,4 @@ root@hostname:/workspace# python app.py -i audio.mp3 -o output.json -m openai/wh
 ## arguments:
     - i: input .mp3 file
     - o: ouput json file
-    - m: model path, defalut = "openai/whisper-base
+    - m: model path, defalut = "openai/whisper-base"
