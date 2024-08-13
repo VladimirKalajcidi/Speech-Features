@@ -4,7 +4,7 @@
 Install Docker.
 
 ```sh
-$ git clone https://github.com/VladimirKalajcidi/endtoend.git
+$ git clone https://github.com/VladimirKalajcidi/Speech-Features.git
 $ cd endtoend
 $ docker build -t stt .
 ```
