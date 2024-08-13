@@ -30,12 +30,12 @@ stages:
       size: 930
     params:
       params.yaml:
-        SIZE: openai/whisper-tiny
+        SIZE: openai/whisper-base
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: b5c4d2650d347bd0542afb4f6e770a2c.dir
-      size: 302135370
+      md5: 9a6656e3512e8305b3b3b4de2a40f2dc.dir
+      size: 580820018
       nfiles: 6
   training:
     cmd: python src/speechRecognition/pipeline/stage_03_model_trainer.py
@@ -47,8 +47,8 @@ stages:
       nfiles: 7
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: b5c4d2650d347bd0542afb4f6e770a2c.dir
-      size: 302135370
+      md5: 9a6656e3512e8305b3b3b4de2a40f2dc.dir
+      size: 580820018
       nfiles: 6
     - path: config/config.yaml
       hash: md5
@@ -60,18 +60,18 @@ stages:
       size: 936
     params:
       params.yaml:
-        DATA_SIZE: 2
+        DATA_SIZE: 10
         GENERATION_MAX_LENGTH: 225
         LANGUAGE: Russian
         LEARNING_RATE: 0,00001
-        MAX_STEPS: 1
+        MAX_STEPS: 2
         METRIC: wer
         PUSH_TO_HUB: false
-        SIZE: openai/whisper-tiny
+        SIZE: openai/whisper-base
         TASK: transcribe
     outs:
     - path: artifacts/training/model
       hash: md5
-      md5: a616cb22afeb83dd2aa555e0aa0f5ce3.dir
-      size: 151074406
-      nfiles: 4
+      md5: 3cf0271860964228a077d192b54f798c.dir
+      size: 1155646140
+      nfiles: 12

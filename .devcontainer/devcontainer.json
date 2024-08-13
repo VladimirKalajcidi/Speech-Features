@@ -6,18 +6,18 @@
 		"context": "..",
 		"dockerfile": "Dockerfile"
 	},
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/ffmpeg-apt-get:1": {}
+	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-			"ghcr.io/devcontainers-contrib/features/ffmpeg-apt-get:1": {
-			"version": "latest"
-    	}
-	}
+	// "features": {},
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	//"postCreateCommand": "conda create -n new python=3.8 && conda activate new && pip install -r requirements.txt",
+	// "postCreateCommand": "python --version",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
