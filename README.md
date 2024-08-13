@@ -19,8 +19,14 @@ $ docker exec -it whisper bash
 root@hostname:/workspace# ./installation.sh
 root@hostname:/workspace# python app.py -i audio.mp3 -o output.json -m openai/whisper-small 
 ```
-
-## arguments:
+### arguments:
     - i: input .mp3 file
     - o: ouput json file
     - m: model path, defalut = "openai/whisper-base"
+
+
+## Model training
+$ docker run -it -d -v $(pwd):/app/ --net host --name whisper whisper
+$ docker exec -it whisper bash
+root@hostname:/workspace# ./installation.sh
+root@hostname:/workspace# dvc repro
