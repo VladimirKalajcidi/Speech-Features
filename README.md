@@ -11,7 +11,7 @@ $ docker build -t stt .
 
 ## Usage
 ### Extracting Speech Features 
-Execute following command in `endtoend` directory.
+Execute following command in `Speech-Features` directory.
 
 ```sh
 $ docker run -it -d -v $(pwd):/app/ --net host --name stt stt
@@ -27,6 +27,8 @@ Arguments for `app.py`:
 ```
 
 ## Model training
+Execute following command in `Speech-Features` directory.
+
 ```sh
 $ docker run -it -d -v $(pwd):/app/ --net host --name stt stt
 $ docker exec -it stt bash
