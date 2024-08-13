@@ -16,10 +16,11 @@ class PredictionPipeline:
     def __init__(self, audio):
         self.audio=audio
     
-    def transcribe(self):
+    def transcribe(self, model: str):
         device = "cpu"
         torch_dtype = torch.float32
-        model_id = "artifacts/training/model"
+        model_id = model
+        #model_id = "artifacts/training/model"
 
         model = WhisperForConditionalGeneration.from_pretrained(model_id).to(device)
         processor = WhisperProcessor.from_pretrained("openai/whisper-base", language="russian", task="transcribe")
