@@ -169,5 +169,3 @@ audio*
 output.json
 .devcontainer
 cache
-.dvcignore
-dvc.lock

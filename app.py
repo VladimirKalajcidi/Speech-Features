@@ -16,6 +16,3 @@ data = {"text": text,
         "emotions": emotion}
 with open(args.output, 'w') as fp:
     json.dump(data, fp, ensure_ascii=False,)
-
-'''print({"text": text,
-       "emotions": emotion})'''
