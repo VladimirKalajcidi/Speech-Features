@@ -5,23 +5,22 @@ whisper with docker
 Install Docker.
 
 ```sh
-$ git clone https://github.com/karaage0703/whisper-docker
-$ cd whisper-docker
+$ git clone https://github.com/VladimirKalajcidi/endtoend.git
+$ cd endtoend
 $ docker build -t whisper .
 ```
 
 ## Usage
-### Voice recognition with microphone
-Execute following command in `whisper-docker` directory.
+### Extracting Speech Features 
+Execute following command in `endtoend` directory.
 
 ```sh
-$ docker run -it -d -v $(pwd):/workspace/ --net host --name whisper whisper
+$ docker run -it -d -v $(pwd):/app/ --net host --name whisper whisper
 $ docker exec -it whisper bash
-root@hostname:/workspace# python whisper-server.py
+root@hostname:/workspace# python app.py -i audio.mp3 -o output.json -m openai/whisper-small 
 ```
 
-Open new terminal and execute following command:
-
-```sh
-$ python mic.py
-```
+## arguments:
+    - i: input .mp3 file
+    - o: ouput json file
+    - m: model path, defalut = "openai/whisper-base
