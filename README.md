@@ -20,9 +20,9 @@ root@hostname:/workspace# ./installation.sh
 root@hostname:/workspace# python app.py -i audio.mp3 -o output.json -m openai/whisper-small 
 ```
 Arguments for `app.py`:
-    - i: input .mp3 file
-    - o: ouput .json file
-    - m: model path, defalut = "openai/whisper-base", finetuned = "artifacts/training/model"
+    * - i: input .mp3 file
+    * - o: ouput .json file
+    * - m: model path, defalut = "openai/whisper-base", finetuned = "artifacts/training/model"
 
 
 ## Model training
