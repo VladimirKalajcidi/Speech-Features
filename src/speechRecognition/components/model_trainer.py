@@ -83,8 +83,10 @@ class Training:
 
 
     @staticmethod
-    def save_model(path: Path, model: WhisperForConditionalGeneration):
+    def save_model(path: Path, model: WhisperForConditionalGeneration, tokenizer):
         model.save_pretrained(path, from_pt=True)
+        tokenizer.save_pretrained(path)
+
 
     
     def train(self):
@@ -93,7 +95,8 @@ class Training:
 
         self.save_model(
             path=self.config.trained_model_path,
-            model=self.model
+            model=self.model,
+            tokenizer=self.tokenizer
         )
 
 

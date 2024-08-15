@@ -28,4 +28,5 @@ joblib
 types-PyYAML
 Flask
 Flask-Cors
+ctranslate2
 -e .
