@@ -11,8 +11,7 @@ args = parser.parse_args()
 
 
 pipe = PredictionPipeline(args.input)
-text = pipe.transcribe(args.model, args.token)
-
-data = {"text": text}
+output = pipe.transcribe(args.model, args.token)
+    
 with open(args.output, 'w') as fp:
-    json.dump(data, fp, ensure_ascii=False,)
+        json.dump(output, fp, ensure_ascii=False,)

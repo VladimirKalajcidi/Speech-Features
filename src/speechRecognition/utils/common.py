@@ -12,6 +12,13 @@ import base64
 import torch
 from dataclasses import dataclass
 from typing import Any, Dict, List, Union
+import audeer
+import audonnx
+import numpy as np
+import audiofile
+import librosa
+import audresample
+from pydub import AudioSegment
 
 
 def compute_metrics(pred, tokenizer, metric):
@@ -170,3 +177,36 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+
+def recognize_emotions(audio):
+
+        url = 'https://zenodo.org/record/6221127/files/w2v2-L-robust-12.6bc4a7fd-1.1.0.zip'
+        cache_root = audeer.mkdir('cache')
+        model_root = audeer.mkdir('model')
+
+        archive_path = audeer.download_url(url, cache_root, verbose=True)
+        audeer.extract_archive(archive_path, model_root)
+        model = audonnx.load(model_root)
+
+        sound = AudioSegment.from_mp3(audio)
+        sound.export("emotions.mp3", format="mp3")
+        audio = "emotions.mp3"
+
+        wav, fs = audiofile.read(audio)
+        if fs != 16000:
+            wav = audresample.resample(wav, fs, 16000)
+
+        duration = librosa.get_duration(filename=audio)
+
+        os.remove("emotions.mp3")
+
+        for i in range(wav.shape[0] // int(fs * duration)):
+                pred = model(
+                    wav[int((0 + i) * fs * duration):  int((i+1) * fs * duration)], fs)
+                emotion = f"Arousal, dominance, valence #{i}: {pred['logits']}"
+                return emotion
+        if wav.shape[0] % int(fs * duration) != 0:
+            pred = model(wav[-(wav.shape[0] % (fs*duration)):], fs)
+            emotion = f"Arousal, dominance, valence #{i+1}: {pred['logits']}"
+            return emotion
