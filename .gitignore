@@ -175,6 +175,7 @@ whisper-ct2
 env*/
 audios/*
 requirements.txt
+/.DS_Store
 .DS_Store
 src/.DS_Store
 *Store
