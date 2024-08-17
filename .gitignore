@@ -174,3 +174,4 @@ env2/*
 whisper-ct2
 env*/
 audios/*
+requirements.txt
