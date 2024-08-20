@@ -8,12 +8,9 @@ from transformers import (WhisperTokenizer,
 from speechRecognition.utils.common import DataCollatorSpeechSeq2SeqWithPadding
 from speechRecognition.utils.common import compute_metrics
 from speechRecognition.entity.config_entity import TrainingConfig
-from dataclasses import dataclass
 from datasets import load_dataset
-from typing import Any, Dict, List, Union
 from pathlib import Path
 
-import torch
 import evaluate
 
 

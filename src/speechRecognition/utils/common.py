@@ -8,13 +8,11 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
-import base64
 import torch
 from dataclasses import dataclass
-from typing import Any, Dict, List, Union
+from typing import Dict, List, Union
 import audeer
 import audonnx
-import numpy as np
 import audiofile
 import librosa
 import audresample

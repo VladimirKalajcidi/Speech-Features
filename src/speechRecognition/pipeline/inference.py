@@ -1,7 +1,6 @@
 import os
 import audeer
 import audonnx
-import numpy as np
 import audiofile
 import librosa
 import audresample

@@ -1,8 +1,3 @@
-import os
-import urllib.request as request
-from zipfile import ZipFile
-import whisper
-import torch
 from transformers import WhisperForConditionalGeneration
 from pathlib import Path
 from speechRecognition.entity.config_entity import (PrepareBaseModelConfig)

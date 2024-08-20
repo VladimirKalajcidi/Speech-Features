@@ -1,5 +1,5 @@
 import os
-from speechRecognition.constants import *
+from speechRecognition.constants import Path, CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from speechRecognition.utils.common import read_yaml, create_directories
 from speechRecognition.entity.config_entity import (DataIngestionConfig,
                                                     PrepareBaseModelConfig,

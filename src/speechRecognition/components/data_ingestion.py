@@ -1,6 +1,4 @@
 import os
-import zipfile
-import gdown
 from speechRecognition import logger
 from datasets import load_dataset
 from speechRecognition.entity.config_entity import DataIngestionConfig
