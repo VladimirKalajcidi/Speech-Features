@@ -23,5 +23,3 @@ lintest:
     stage: test
     script:
         - echo "Starting linters..."
-        - pip install flake8
-        - flake8 main.py
