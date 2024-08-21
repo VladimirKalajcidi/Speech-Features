@@ -26,15 +26,15 @@ stages:
       size: 474
     - path: src/speechRecognition/pipeline/stage_02_prepare_base_model.py
       hash: md5
-      md5: 8098990a8a8a88920faed810523b4ea0
-      size: 930
+      md5: ab0298bd832f51724528616d023941e7
+      size: 929
     params:
       params.yaml:
         SIZE: openai/whisper-base
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 9a6656e3512e8305b3b3b4de2a40f2dc.dir
+      md5: a39ac3f8362c7723dbd794c98a60479a.dir
       size: 580820018
       nfiles: 6
   training:
@@ -47,7 +47,7 @@ stages:
       nfiles: 7
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 9a6656e3512e8305b3b3b4de2a40f2dc.dir
+      md5: a39ac3f8362c7723dbd794c98a60479a.dir
       size: 580820018
       nfiles: 6
     - path: config/config.yaml
@@ -56,8 +56,8 @@ stages:
       size: 474
     - path: src/speechRecognition/pipeline/stage_03_model_trainer.py
       hash: md5
-      md5: ab22a7a640cd31f3d6d3b2a955ac3b18
-      size: 936
+      md5: afe06f4698070aa76a1ff29a8f025f34
+      size: 935
     params:
       params.yaml:
         DATA_SIZE: 10
@@ -72,6 +72,6 @@ stages:
     outs:
     - path: artifacts/training/model
       hash: md5
-      md5: 3cf0271860964228a077d192b54f798c.dir
-      size: 1155646140
-      nfiles: 12
+      md5: 018d9743b77ef9ba15f5a84aeb5ca712.dir
+      size: 292319315
+      nfiles: 10
