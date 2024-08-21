@@ -22,7 +22,7 @@ api.upload_folder(
 )
 
 api.upload_file(
-    path_or_fileobj="tokenizer.json",
+    path_or_fileobj="artifacts/tokenizer.json",
     path_in_repo="tokenizer.json",
     repo_id=args.directory,
     repo_type="model",
