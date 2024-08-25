@@ -1,3 +1,4 @@
+#not freezed
 git+https://github.com/m-bain/whisperx.git
 numpy
 openai-whisper
