@@ -17,13 +17,14 @@ Execute following command in `Speech-Features` directory.
 $ docker run -it -d -v $(pwd):/app/ --net host --name stt stt
 $ docker exec -it stt bash
 root@hostname:/workspace# ./scripts/installation.sh
-root@hostname:/workspace# python app.py -i audio.mp3 -o output.json -m openai/whisper-small 
+root@hostname:/workspace# python app.py -i audio.mp3 -o output.json -m small -t token
 ```
 Arguments for `app.py`:
 ```sh
     - i: input .mp3 file
     - o: ouput .json file
     - m: model path, defalut = "openai/whisper-base", custom = "username/repo"
+    - t: huggingface token ("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")
 ```
 
 ## Model training
