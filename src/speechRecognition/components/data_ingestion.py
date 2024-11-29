@@ -20,7 +20,7 @@ class DataIngestion:
             os.makedirs("artifacts/data_ingestion", exist_ok=True)
             logger.info(f"Downloading data from {dataset_root} into file {download_dir}")
 
-            dataset = load_dataset("vladimir7542/for_whisper_ft1_prepared")
+            dataset = load_dataset("REPO")
             dataset.save_to_disk(download_dir)
 
             logger.info(f"Downloaded data from {dataset_root} into file {download_dir}")
